@@ -61,7 +61,11 @@ class Game
           direction = Random.new.rand(0..3)
           if direction == 0 # norte
             if i > 0 and !@mapa[i - 1][j].instance_of?(Inimigo)
-              if @mapa[i - 1][j] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
+              if @mapa[i - 1][j] == Item
+                @mapa[i][j].add_item()
+                temp_matrix[i - 1][j] = @mapa[i][j]
+                temp_matrix[i][j] = Neutro
+              elsif @mapa[i - 1][j] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
                 abort("VOCE PERDEU")
               elsif @mapa[i - 1][j] == Katanis and @mapa[i][j].num_itens() <= @katanis_itens
                 temp_matrix[i][j] = Neutro
@@ -74,7 +78,11 @@ class Game
           # Sul
           if direction == 1 # sul
             if i < 4 and !@mapa[i + 1][j].instance_of?(Inimigo)
-              if @mapa[i + 1][j] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
+              if @mapa[i + 1][j] == Item
+                @mapa[i][j].add_item()
+                temp_matrix[i + 1][j] = @mapa[i][j]
+                temp_matrix[i][j] = Neutro
+              elsif @mapa[i + 1][j] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
                 abort("VOCE PERDEU")
               elsif @mapa[i + 1][j] == Katanis and @mapa[i][j].num_itens() <= @katanis_itens
                 temp_matrix[i][j] = Neutro
@@ -87,7 +95,11 @@ class Game
           # Leste
           if direction == 2 # leste
             if j < 4 and !@mapa[i][j + 1].instance_of?(Inimigo)
-              if @mapa[i][j + 1] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
+              if @mapa[i][j + 1] == Item
+                @mapa[i][j].add_item()
+                temp_matrix[i][j + 1] = @mapa[i][j]
+                temp_matrix[i][j] = Neutro
+              elsif @mapa[i][j + 1] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
                 abort("VOCE PERDEU")
               elsif @mapa[i][j + 1] == Katanis and @mapa[i][j].num_itens() <= @katanis_itens
                 temp_matrix[i][j] = Neutro
@@ -100,7 +112,11 @@ class Game
           # Oeste
           if direction == 3 # oeste
             if j > 0 and !@mapa[i][j - 1].instance_of?(Inimigo)
-              if @mapa[i][j - 1] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
+              if @mapa[i][j - 1] == Item
+                @mapa[i][j].add_item()
+                temp_matrix[i][j - 1] = @mapa[i][j]
+                temp_matrix[i][j] = Neutro
+              elsif @mapa[i][j - 1] == Katanis and @mapa[i][j].num_itens() > @katanis_itens
                 abort("VOCE PERDEU")
               elsif @mapa[i][j - 1] == Katanis and @mapa[i][j].num_itens() <= @katanis_itens
                 temp_matrix[i][j] = Neutro
